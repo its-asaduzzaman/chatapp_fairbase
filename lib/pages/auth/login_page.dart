@@ -59,6 +59,10 @@ class _LoginPageState extends State<LoginPage> {
                       print(email);
                     });
                   },
+                  validator: (val){
+                    return RegExp( r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        .hasMatch(val!)? null : "please enter a valid email";
+                  },
                 ),
                 const SizedBox(
                   height: 15,
@@ -72,6 +76,13 @@ class _LoginPageState extends State<LoginPage> {
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
+                  validator: (val){
+                    if(val!.length < 6){
+                      return "password must be at least 6 characters";
+                    }else {
+                      return null;
+                    }
+                  },
                   onChanged: (val) {
                     setState(() {
                       password = val;
@@ -79,11 +90,17 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                 ),
+                ElevatedButton(onPressed: (){login();}, child: Text("test"))
               ],
             ),
           ),
         ),
       ),
     );
+  }
+  login(){
+    if (formKey.currentState!.validate()){
+
+    }
   }
 }
