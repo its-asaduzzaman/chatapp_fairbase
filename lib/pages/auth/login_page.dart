@@ -1,4 +1,5 @@
 import 'package:chatapp_fluttebase/widgets/widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -65,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 20,
                 ),
                 TextFormField(
                   obscureText: true,
@@ -90,10 +91,15 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      login();
+                    },
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).primaryColor,
                         elevation: 0,
@@ -105,6 +111,23 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text.rich(
+                  TextSpan(
+                    text: "Dont have an account.",
+                    style: TextStyle(color: Colors.black, fontSize: 14),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: "Register here",
+                          style: const TextStyle(
+                              color: Colors.black,
+                              decoration: TextDecoration.underline),
+                          recognizer: TapGestureRecognizer()..onTap = () {}),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -112,4 +135,6 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  login() {}
 }
