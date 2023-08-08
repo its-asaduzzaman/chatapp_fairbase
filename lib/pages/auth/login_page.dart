@@ -39,12 +39,9 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
-                  height: 20,
-                ),
-                Image.asset("assets/login.png"),
-                const SizedBox(
                   height: 10,
                 ),
+                Image.asset("assets/login.png"),
                 TextFormField(
                   decoration: textInputDecoration.copyWith(
                     labelText: "Email",
@@ -59,13 +56,16 @@ class _LoginPageState extends State<LoginPage> {
                       print(email);
                     });
                   },
-                  validator: (val){
-                    return RegExp( r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(val!)? null : "please enter a valid email";
+                  validator: (val) {
+                    return RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(val!)
+                        ? null
+                        : "please enter a valid email";
                   },
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 5,
                 ),
                 TextFormField(
                   obscureText: true,
@@ -76,10 +76,10 @@ class _LoginPageState extends State<LoginPage> {
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
-                  validator: (val){
-                    if(val!.length < 6){
+                  validator: (val) {
+                    if (val!.length < 6) {
                       return "password must be at least 6 characters";
-                    }else {
+                    } else {
                       return null;
                     }
                   },
@@ -90,17 +90,26 @@ class _LoginPageState extends State<LoginPage> {
                     });
                   },
                 ),
-                ElevatedButton(onPressed: (){login();}, child: Text("test"))
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30))),
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-  login(){
-    if (formKey.currentState!.validate()){
-
-    }
   }
 }
